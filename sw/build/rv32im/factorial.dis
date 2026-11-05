@@ -1,0 +1,41 @@
+
+build/rv32im/factorial.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	00001117          	auipc	sp,0x1
+   4:	00010113          	mv	sp,sp
+   8:	008000ef          	jal	10 <main>
+   c:	0000006f          	j	c <_start+0xc>
+
+00000010 <main>:
+  10:	ff010113          	addi	sp,sp,-16 # ff0 <main+0xfe0>
+  14:	00300793          	li	a5,3
+  18:	00f12623          	sw	a5,12(sp)
+  1c:	00c12603          	lw	a2,12(sp)
+  20:	00960613          	addi	a2,a2,9
+  24:	04060863          	beqz	a2,74 <main+0x64>
+  28:	00100713          	li	a4,1
+  2c:	00000693          	li	a3,0
+  30:	00100793          	li	a5,1
+  34:	02e787b3          	mul	a5,a5,a4
+  38:	00f686b3          	add	a3,a3,a5
+  3c:	00170713          	addi	a4,a4,1
+  40:	fee67ae3          	bgeu	a2,a4,34 <main+0x24>
+  44:	00d7c7b3          	xor	a5,a5,a3
+  48:	00002737          	lui	a4,0x2
+  4c:	00f72023          	sw	a5,0(a4) # 2000 <_stack_top+0x1000>
+  50:	fc58b737          	lui	a4,0xfc58b
+  54:	de770713          	addi	a4,a4,-537 # fc58ade7 <_stack_top+0xfc589de7>
+  58:	00e787b3          	add	a5,a5,a4
+  5c:	0017b793          	seqz	a5,a5
+  60:	00002737          	lui	a4,0x2
+  64:	00f72223          	sw	a5,4(a4) # 2004 <_stack_top+0x1004>
+  68:	00000513          	li	a0,0
+  6c:	01010113          	addi	sp,sp,16
+  70:	00008067          	ret
+  74:	00060693          	mv	a3,a2
+  78:	00100793          	li	a5,1
+  7c:	fc9ff06f          	j	44 <main+0x34>

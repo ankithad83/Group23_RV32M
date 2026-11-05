@@ -1,0 +1,55 @@
+
+build/rv32im/gcd.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	00001117          	auipc	sp,0x1
+   4:	00010113          	mv	sp,sp
+   8:	008000ef          	jal	10 <main>
+   c:	0000006f          	j	c <_start+0xc>
+
+00000010 <main>:
+  10:	ff010113          	addi	sp,sp,-16 # ff0 <main+0xfe0>
+  14:	00300793          	li	a5,3
+  18:	00f12623          	sw	a5,12(sp)
+  1c:	00c12883          	lw	a7,12(sp)
+  20:	00189813          	slli	a6,a7,0x1
+  24:	01180833          	add	a6,a6,a7
+  28:	00281813          	slli	a6,a6,0x2
+  2c:	41180833          	sub	a6,a6,a7
+  30:	00001637          	lui	a2,0x1
+  34:	e7060613          	addi	a2,a2,-400 # e70 <main+0xe60>
+  38:	00c80633          	add	a2,a6,a2
+  3c:	4ec00793          	li	a5,1260
+  40:	02f888b3          	mul	a7,a7,a5
+  44:	000037b7          	lui	a5,0x3
+  48:	28878793          	addi	a5,a5,648 # 3288 <_stack_top+0x2288>
+  4c:	00f80833          	add	a6,a6,a5
+  50:	00088593          	mv	a1,a7
+  54:	00000513          	li	a0,0
+  58:	0240006f          	j	7c <main+0x6c>
+  5c:	00078713          	mv	a4,a5
+  60:	02f6f7b3          	remu	a5,a3,a5
+  64:	00070693          	mv	a3,a4
+  68:	fe079ae3          	bnez	a5,5c <main+0x4c>
+  6c:	00e50533          	add	a0,a0,a4
+  70:	1ce60613          	addi	a2,a2,462
+  74:	011585b3          	add	a1,a1,a7
+  78:	01060e63          	beq	a2,a6,94 <main+0x84>
+  7c:	00060863          	beqz	a2,8c <main+0x7c>
+  80:	00060793          	mv	a5,a2
+  84:	00058693          	mv	a3,a1
+  88:	fd5ff06f          	j	5c <main+0x4c>
+  8c:	00058713          	mv	a4,a1
+  90:	fddff06f          	j	6c <main+0x5c>
+  94:	000027b7          	lui	a5,0x2
+  98:	00a7a023          	sw	a0,0(a5) # 2000 <_stack_top+0x1000>
+  9c:	e9850793          	addi	a5,a0,-360
+  a0:	0017b793          	seqz	a5,a5
+  a4:	00002737          	lui	a4,0x2
+  a8:	00f72223          	sw	a5,4(a4) # 2004 <_stack_top+0x1004>
+  ac:	00000513          	li	a0,0
+  b0:	01010113          	addi	sp,sp,16
+  b4:	00008067          	ret

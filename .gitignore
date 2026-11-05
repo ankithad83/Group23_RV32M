@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.jou
+*.log
+*.runs/
+*.cache/
+*.hw/
+*.sim/
